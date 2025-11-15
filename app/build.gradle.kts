@@ -2,8 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
-    // ✅ UPDATED: Changed to the most common recent version
-    // If this fails, we will try the 2.0.0 version next.
+
     id("com.google.devtools.ksp") version "2.0.21-1.0.25"
 }
 
