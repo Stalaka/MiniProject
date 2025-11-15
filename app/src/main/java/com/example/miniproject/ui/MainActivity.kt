@@ -49,7 +49,17 @@ class MainActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progress_bar)
         val fab = findViewById<FloatingActionButton>(R.id.fab_new_request)
 
-        adapter = MaterialAdapter(emptyList())
+        // ✅ UPDATED: Initialize Adapter with Click Listener for Detail View
+        adapter = MaterialAdapter(emptyList()) { selectedItem ->
+            // This code runs when you tap a card
+            val intent = Intent(this, DetailActivity::class.java)
+            // Pass data to the new screen
+            intent.putExtra("ORDER_ID", selectedItem.id)
+            intent.putExtra("ORDER_NAME", selectedItem.name)
+            intent.putExtra("ORDER_STATUS", selectedItem.status)
+            startActivity(intent)
+        }
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -104,6 +114,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            // ✅ ADDED: Navigation to Purchase Order Activity
+            R.id.action_purchase_orders -> {
+                startActivity(Intent(this, PurchaseOrderActivity::class.java))
+                true
+            }
             R.id.action_logout -> {
                 startLoginActivity()
                 true
@@ -112,5 +127,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-// ^^^ This final bracket closes the class.
-// If you have anything after this, delete it.
