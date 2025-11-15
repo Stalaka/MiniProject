@@ -41,7 +41,6 @@ class PurchaseOrderActivity : AppCompatActivity() {
                     val orders = response.body()!!
 
                     // 2. SAVE to Local Database (Cache)
-                    // We use Dispatchers.IO for database operations
                     withContext(Dispatchers.IO) {
                         db.orderDao().insertAll(orders)
                     }

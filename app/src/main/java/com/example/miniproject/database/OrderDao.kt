@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-// 👇 THIS LINE IS CRITICAL. If it is missing, the build fails.
 import com.example.miniproject.models.PurchaseOrder
 
 @Dao

@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progress_bar)
         val fab = findViewById<FloatingActionButton>(R.id.fab_new_request)
 
-        // ✅ UPDATED: Initialize Adapter with Click Listener for Detail View
+        // Initialize Adapter with Click Listener for Detail View
         adapter = MaterialAdapter(emptyList()) { selectedItem ->
             // This code runs when you tap a card
             val intent = Intent(this, DetailActivity::class.java)
@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            // ✅ ADDED: Navigation to Purchase Order Activity
+            // Navigation to Purchase Order Activity
             R.id.action_purchase_orders -> {
                 startActivity(Intent(this, PurchaseOrderActivity::class.java))
                 true

@@ -3,7 +3,6 @@ package com.example.miniproject.models
 import com.google.gson.annotations.SerializedName
 
 data class PassportMaterial(
-    // Example fields - adjust names/types based on your API
     @SerializedName("material_id")
     val id: Int,
 

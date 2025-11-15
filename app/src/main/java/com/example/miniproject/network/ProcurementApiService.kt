@@ -17,7 +17,7 @@ interface ProcurementApiService {
     @POST("api/login/")
     suspend fun loginUser(@Body request: LoginRequest): Response<AuthResponse>
 
-    // 2. Dashboard (User Orders) Endpoint
+    // 2. Dashboard Endpoint
     @GET("api/user/orders/")
     suspend fun getUserOrders(): Response<List<PassportMaterial>>
 
@@ -25,20 +25,18 @@ interface ProcurementApiService {
     @POST("api/procure/")
     suspend fun requestProcurement(@Body material: PassportMaterial): Response<Unit>
 
-    // 4. ✅ NEW: Fetch Purchase Orders List
-    // Matches Django: path('api/purchase-orders/', ...)
+    // 4.Fetch Purchase Orders List
     @GET("api/purchase-orders/")
     suspend fun getPurchaseOrders(): Response<List<PurchaseOrder>>
 
-    // 5. ✅ NEW: Update Order Status Endpoint
-    // Matches Django: path('api/orders/<int:order_id>/update/', ...)
+    // 5.Update Order Status Endpoint
     @POST("api/orders/{id}/update/")
     suspend fun updateOrderStatus(
         @Path("id") id: Int,
         @Body status: StatusUpdate
     ): Response<Unit>
 
-    // (Optional Legacy Endpoint - keep if you use it, remove if not)
+
     @GET("api/materials/")
     suspend fun getAllMaterials(): Response<List<PassportMaterial>>
 }
